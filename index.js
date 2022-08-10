@@ -146,7 +146,7 @@ const producto = [
      respuesta =producto
      
     }
-    res.send(respuesta[0]);
+    res.send(respuesta);
    });
 
 
