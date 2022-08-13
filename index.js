@@ -186,7 +186,7 @@ database.once('connected',()=>{
    app.post('/postProducto', async (req, res) => {
     const data = new Model({
         id: req.body.id,
-        name: req.body.age,
+        name: req.body.name,
         sizes: req.body.sizes,
         category: req.body.category,
         price: req.body.price,
