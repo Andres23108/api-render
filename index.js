@@ -3,7 +3,9 @@ require('dotenv').config();
 
 const express = require("express");
 const mongoose=require("mongoose");
+
 const mongoDBenv=process.env.DATABASE_URL;
+
 const Model = require('./model/model');
 
 mongoose.connect(mongoDBenv);
@@ -26,7 +28,7 @@ database.once('connected',()=>{
   console.log("Conectado a mongoDB")
 });
 
-const producto = [
+/* const producto = [
     {
       id: 1,
       name: "Camiseta Puma",
@@ -135,7 +137,7 @@ const producto = [
       imageSrc:
         "https://res.cloudinary.com/daobmfotr/image/upload/v1657863864/e-commerce-x/argentina_iltkio.webp",
     }
-  ];
+  ]; */
   
 
 
@@ -155,7 +157,7 @@ const producto = [
    });
 
 
-   app.get('/productos', function (req, res) {
+/*    app.get('/productos', function (req, res) {
 
     if(producto.id === '' || producto.nombre=== '') {
      respuesta = {
@@ -168,7 +170,17 @@ const producto = [
      
     }
     res.send(respuesta);
-   });
+   }); */
+
+   app.get('/productos', async (req, res) => {
+    try{
+        const data = await Model.find();
+        res.json(data)
+    }
+    catch(error){
+        res.status(500).json({message: error.message})
+    }
+})
 
 
    app.post('/postProducto', async (req, res) => {
