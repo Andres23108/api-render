@@ -50,7 +50,7 @@ database.once('connected',()=>{
 
 
 
-   app.get('/productos', async (req, res) => {
+   app.get('/products', async (req, res) => {
     try{
         const data = await Model.find();
         res.json(data)
@@ -61,7 +61,7 @@ database.once('connected',()=>{
 })
 
 
-   app.post('/postProducto', async (req, res) => {
+   app.post('/products', async (req, res) => {
     const data = new Model({
         id: req.body.id,
         name: req.body.name,
